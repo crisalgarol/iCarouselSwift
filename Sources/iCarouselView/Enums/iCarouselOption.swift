@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum iCarouselOption {
+public enum iCarouselOption {
     case wrap
     case showBackFaces
     case offsetMultiplier

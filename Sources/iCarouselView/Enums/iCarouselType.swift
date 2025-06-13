@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum iCarouselType: String, CaseIterable {
+public enum iCarouselType: String, CaseIterable {
     case linear
     case rotary
     case invertedRotary

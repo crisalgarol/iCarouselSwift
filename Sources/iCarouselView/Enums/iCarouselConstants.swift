@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum iCarouselConstants {
+public enum iCarouselConstants {
     static let minToggleDuration: Double = 0.2
     static let maxToggleDuration: Double = 0.4
     static let scrollDuration: Double = 0.4

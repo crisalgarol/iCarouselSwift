@@ -45,7 +45,7 @@ public protocol iCarouselCore {
 
 open class iCarouselView: UIView {
     
-    var type: iCarouselType = .linear {
+    public var  type: iCarouselType = .linear {
         didSet {
             layoutItemViews()
         }
@@ -55,7 +55,7 @@ open class iCarouselView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(dataSource: iCarouselDataSource, type: iCarouselType) {
+    public init(dataSource: iCarouselDataSource, type: iCarouselType) {
         self.dataSource = dataSource
         self.type = type
         super.init(frame: .zero)
@@ -63,20 +63,20 @@ open class iCarouselView: UIView {
         setUp()
     }
     
-    var dataSource: iCarouselDataSource {
+    public var  dataSource: iCarouselDataSource {
         didSet {
             // TODO: Avoid using reload data
             reloadData()
         }
     }
 
-    weak var delegate: iCarouselDelegate? {
+    public weak var delegate: iCarouselDelegate? {
         didSet {
             setNeedsLayout()
         }
     }
     
-    var maxVisibleItems: Int {
+    public var maxVisibleItems: Int {
         #if os(iOS)
         return 30
         #else
@@ -95,45 +95,46 @@ open class iCarouselView: UIView {
     let floatErrorMarginDefault: CGFloat = 0.000001
     
     // CGFloats
-    var perspective: CGFloat = .zero {
+    public var perspective: CGFloat = .zero {
         didSet {
             transformItemViews()
         }
     }
-    var decelerationRate: CGFloat = 0
+
+    public var decelerationRate: CGFloat = 0
     
-    var decelerationDistance: CGFloat {
+    public var decelerationDistance: CGFloat {
         let acceleration = -startVelocity * decelerationMultiplierDefault * (1.0 - decelerationRate)
         return -pow(startVelocity, 2.0) / (2.0 * acceleration)
     }
 
-    var shouldDecelerate: Bool {
+    public var shouldDecelerate: Bool {
         return abs(startVelocity) > scrollSpeedThresholdDefault &&
                abs(decelerationDistance) > decelerateThresholdDefault
     }
 
-    var shouldScroll: Bool {
+    public var shouldScroll: Bool {
         return abs(startVelocity) > scrollSpeedThresholdDefault &&
                abs(scrollOffset - CGFloat(currentItemIndex())) > scrollDistanceThresholdDefault
     }
 
-    var scrollSpeed: CGFloat = 0
-    var bounceDistance: CGFloat = 0
+    public var scrollSpeed: CGFloat = 0
+    public var bounceDistance: CGFloat = 0
     
-    var isScrollEnabled = false
-    var isPagingEnabled = false
+    public var isScrollEnabled = false
+    public var isPagingEnabled = false
     
-    var isVertical: Bool = false {
+    public var isVertical: Bool = false {
         didSet {
             layoutItemViews()
         }
     }
     
     // TODO: ReadOnly, Getter
-    var isWrapEnabled = false
+    public var isWrapEnabled = false
     
-    var bounces = false
-    var scrollOffset: CGFloat = .zero {
+    public var bounces = false
+    public var scrollOffset: CGFloat = .zero {
         willSet {
             isScrolling = false
             isDecelerating = false
@@ -151,9 +152,9 @@ open class iCarouselView: UIView {
     }
     
     // TODO: ReadOnly
-    var offsetMultiplier: CGFloat = CGFloat()
+    public var  offsetMultiplier: CGFloat = CGFloat()
     
-    var contentOffset: CGSize = .zero {
+    public var  contentOffset: CGSize = .zero {
         didSet {
             if oldValue != contentOffset {
                 layoutItemViews()
@@ -161,7 +162,7 @@ open class iCarouselView: UIView {
         }
     }
 
-    var viewPointOffset: CGSize = .zero {
+    public var  viewPointOffset: CGSize = .zero {
         didSet {
             if oldValue != viewPointOffset {
                 transformItemViews()
@@ -170,23 +171,23 @@ open class iCarouselView: UIView {
     }
     
     // TODO: ReadOnly
-    var numberOfItems = 0
-    var numberOfPlaceholders = 0
+    public var numberOfItems = 0
+    public var numberOfPlaceholders = 0
 
-    var currentItemView: UIView {
+    public var currentItemView: UIView {
         itemView(index: currentItemIndex())
     }
     
     // TODO: ReadOnly
     // TO IMPROVE: Evaluate replacing with a Sorted Set
-    var indexesForVisibleItems: [Int] {
+    public var indexesForVisibleItems: [Int] {
         itemViews.keys.sorted(by: <)
     }
 
-    var numberOfVisibleItems = 0
+    public var numberOfVisibleItems = 0
 
     // TODO: ReadOnly
-    var visibleItemViews: [UIView] {
+    public var visibleItemViews: [UIView] {
         let sortedViews = itemViews.sorted { firstElement, secondElement in
             firstElement.key < secondElement.key
         }
