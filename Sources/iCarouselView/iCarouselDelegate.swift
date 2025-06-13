@@ -11,7 +11,7 @@
 import Foundation
 import QuartzCore
 
-protocol iCarouselDelegate: NSObject {
+public protocol iCarouselDelegate: NSObject {
     
     func willBeginScrollingAnimation(carousel: iCarouselView)
     func didEndScrollingAnimation(carousel: iCarouselView)
