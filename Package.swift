@@ -16,7 +16,7 @@ let package = Package(
         .target(
             name: "iCarouselView",
             dependencies: [],
-            path: "iCarouselView" // carpeta donde está tu código
+            path: "iCarouselSwift/iCarouselView"
         )
     ]
 )
