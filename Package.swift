@@ -4,7 +4,9 @@ import PackageDescription
 let package = Package(
     name: "iCarouselView",
     platforms: [
-        .iOS(.v15) // o el mínimo que soporte tu vista
+        .iOS(.v15),
+        .visionOS(.v1),
+        .watchOS(.v6)
     ],
     products: [
         .library(
@@ -16,7 +18,7 @@ let package = Package(
         .target(
             name: "iCarouselView",
             dependencies: [],
-            path: "iCarouselSwift/iCarouselView"
+            path: "Sources/iCarouselView"
         )
     ]
 )
