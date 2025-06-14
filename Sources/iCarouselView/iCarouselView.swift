@@ -197,13 +197,13 @@ open class iCarouselView: UIView {
     }
 
     // TODO: ReadOnly
-    var itemWidth: CGFloat = 0
+    public var itemWidth: CGFloat = 0
     // TODO: Read only, pero no deberia ser optional
     var contentView = UIView()
     // TODO: ReadOnly
-    var toggle: CGFloat = 0
+    public var toggle: CGFloat = 0
     
-    var autoscroll: CGFloat = .zero {
+    public var autoscroll: CGFloat = .zero {
         didSet {
             if autoscroll != .zero {
                 startAnimation()
@@ -227,7 +227,7 @@ open class iCarouselView: UIView {
     var previousScrollOffset: CGFloat = 0
     var previousItemIndex: Int = 0
     
-    var numberOfPlaceholdersToShow: Int = 0
+    public var numberOfPlaceholdersToShow: Int = 0
     
     var startOffset: CGFloat = 0
     var endOffset: CGFloat = 0
@@ -386,7 +386,7 @@ open class iCarouselView: UIView {
         return min( max(0.0, offset), max(0.0, CGFloat(numberOfItems) - 1.0) )
     }
     
-    func currentItemIndex() -> Int {
+    public func currentItemIndex() -> Int {
         return clampedIndex(index: Int(scrollOffset.rounded()))
     }
     
@@ -467,7 +467,7 @@ open class iCarouselView: UIView {
         scrollByOffset(offset: offset, duration: duration)
     }
     
-    func scrollToItem(index: Int, duration: TimeInterval) {
+    public func scrollToItem(index: Int, duration: TimeInterval) {
         scrollToOffset(offset: CGFloat(index), duration: duration)
     }
     
@@ -497,7 +497,7 @@ open class iCarouselView: UIView {
 }
 
 extension iCarouselView {
-    func setUp() {
+    public func setUp() {
         decelerationRate = 0.95
         isScrollEnabled = true
         bounces = true
